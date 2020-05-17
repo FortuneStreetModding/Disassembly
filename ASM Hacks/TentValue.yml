@@ -6,9 +6,9 @@
 definitions: 
  - &tent_value_increase 100
  - &tent_value_level_1_price 100
- - &tent_value_level_2_price 400
- - &tent_value_level_3_price 1200
- - &tent_value_level_4_price 2400
+ - &tent_value_level_2_price 500
+ - &tent_value_level_3_price 1000
+ - &tent_value_level_4_price 2000
 # ----------- Things that should not be modified ----------------
  - &original_tent_value_increase 100
  - &original_tent_value_level_1_price 100
