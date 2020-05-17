@@ -4,7 +4,7 @@
 #
 # -------------- Things you may want to modify -----------------
 definitions: 
- - &price_per_level 100
+ - &price_per_level 60
 # ----------- Things that should not be modified ----------------
  - &original_price_per_level 30
 ---
