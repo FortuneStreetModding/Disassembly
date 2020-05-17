@@ -1,0 +1,30 @@
+# ---------------------------------------------------------
+# ----------------- Default Game Settings -----------------
+# ---------------------------------------------------------
+# 
+# Sets GameSpeed to fast and Dialogs to Off per default
+#
+# ----------- Things that should not be modified ----------------
+--- # jump to set custom default settings
+ group: Original
+ checkAddress:   1C3774
+ checkBytes:     94 21 ff e0 7c 08 02 a6 38 80 00 00 38 a0 02 50 90 01 00 24 bf 61 00 0c 7c 7b 1b 78 4b e3 c3 25 38 00 02 50 b0 1b 00 02 4b ea ea 61 38 80 00 01 3b c0 ff ff 38 00 00 04 38 a0 00 02 b0 7b 00 00 3b bb 00 04 3b 80 00 00 3b e0 00 ff
+ patchAddress:   1C37C0
+ originalBytes:  98 BB 02 3A     # stb r5,0x23a(r27)
+ patchBytes:     80 0F EA DC     # bl 0x800fec60
+--- # 800fec60()
+ group: Original
+ checkAddress:   D9DAC
+ checkBytes:     90 01 00 B8 90 01 00 BC 90 01 00 C0 90 01 00 C4 90 01 00 C8 90 01 00 CC 90 01 00 D0 90 01 00 D4 90 01 00 D8
+ patchAddress:   D9DD0
+ originalBytes:  |
+  90 01 00 dc    # stw r0,0x00DC (sp)
+  48 01 92 05    # bl ->0x800F78DC
+  80 01 00 34    # mr r3, r31
+  80 7E 00 34    # addi r6, sp, 28
+ patchBytes:     |
+  98 bb 02 3a    # stb r5,0x23a(r27)  replaced opcode
+  98 bb 02 2d    # stb r5,0x22d(r27)  gameSpeed is set to 2 here
+  98 bb 02 2e    # stb r5,0x22e(r27)  dialogs is set to 2 (off) here
+  4e 80 00 20    # blr
+---
